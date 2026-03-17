@@ -1,0 +1,5 @@
+rootProject.name = 'msa_cqrs'
+
+include 'api-board-command'
+include 'api-board-query'
+include 'api-reply-command'
