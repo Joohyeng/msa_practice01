@@ -8,5 +8,13 @@ public class BoardDto {
         private Long idx;
         private String title;
         private String content;
+
+        public Board toDocument() {
+            return Board.builder()
+                    .idx(this.idx)
+                    .title(this.title)
+                    .content(this.content)
+                    .build();
+        }
     }
 }

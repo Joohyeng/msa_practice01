@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/board/query")
 public class BoardQueryController {
     private final BoardFeignClient boardFeignClient;
+    private final BoardRepository boardRepository;
 
     @KafkaListener(topics="board-created", groupId = "board-query-group-01")
     public void consume(@Header(KafkaHeaders.RECEIVED_KEY) Long key,
                         @Payload Long boardIdx) {
         BoardDto.RegRes result = boardFeignClient.getBoard(boardIdx);
-        System.out.println("result : "+ result.getTitle());
+        System.out.println(result.getTitle());
+        boardRepository.save(result.toDocument());
     }
 }

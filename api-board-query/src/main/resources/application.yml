@@ -3,7 +3,8 @@ server:
 spring:
   application:
     name: api-board-query
-
+  elasticsearch:
+    uris: http://10.10.10.110:9200
   kafka:
     bootstrap-servers: 10.10.10.40:9092
     consumer:
