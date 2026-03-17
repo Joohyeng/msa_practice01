@@ -11,7 +11,6 @@ public class BoardDto {
             return Board.builder()
                     .title(this.title)
                     .content(this.content)
-                    .createdAt(LocalDateTime.now())
                     .build();
         }
     }
